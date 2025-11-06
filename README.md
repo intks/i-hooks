@@ -20,7 +20,7 @@ pnpm add @intks/hooks
 // Import all hooks from the main entry
 import { useCounter, useToggle } from '@intks/hooks'
 
-// Or import individual hooks (recommended for tree-shaking)
+// Or import individual hooks
 import { useCounter } from '@intks/hooks/useCounter'
 import { useToggle } from '@intks/hooks/useToggle'
 ```
