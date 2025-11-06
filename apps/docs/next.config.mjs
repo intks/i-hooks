@@ -9,6 +9,6 @@ export default withNextra({
   trailingSlash: true,
   images: { unoptimized: true },
   assetPrefix: basePath || undefined,
-  basePath: basePath || undefined
+  basePath: basePath || undefined,
 })
 

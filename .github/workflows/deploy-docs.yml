@@ -2,7 +2,7 @@ name: Deploy Docs to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -36,7 +36,7 @@ jobs:
           # For project pages: set to '/<REPO_NAME>' (e.g. '/i-hooks')
           NEXT_PUBLIC_BASE_PATH: ${{ vars.GH_PAGES_BASE_PATH }}
         run: |
-          yarn build:static
+          yarn build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -53,4 +53,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
