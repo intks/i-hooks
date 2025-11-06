@@ -1,9 +1,26 @@
-# @intks/hooks
+# intks-hooks-monorepo
 
-A collection of useful React hooks built with TypeScript.
+Monorepo containing the hooks package and documentation site.
 
-## Installation
+- `packages/ihooks` – publishable package `@intks/hooks`
+- `apps/docs` – docs site (Next.js + Nextra)
 
+## Quick Start
+
+```bash
+# install dependencies for all workspaces
+yarn install
+
+# run docs locally
+yarn dev:docs
+
+# build all workspaces
+yarn build
+```
+
+## Package: @intks/hooks
+
+Install:
 ```bash
 npm install @intks/hooks
 # or
@@ -12,77 +29,34 @@ yarn add @intks/hooks
 pnpm add @intks/hooks
 ```
 
-## Usage
-
-### Import hooks
-
-```typescript
-// Import all hooks from the main entry
+Usage:
+```ts
 import { useDisclosure } from '@intks/hooks'
-
-// Or import individual hooks
-import { useDisclosure } from '@intks/hooks/useDisclosure'
 ```
 
-## Hooks
+Peer dependencies:
+- react >= 18
 
-### `useDisclosure`
+## Docs App
+- Located at `apps/docs`
+- Built with Next.js + Nextra
 
-A hook for managing a boolean state with open, close, and toggle functionality.
-
-```typescript
-import { useDisclosure } from '@intks/hooks'
-
-const MyComponent = () => {
-  const { isOpen, open, close, toggle } = useDisclosure()
-
-  return (
-    <div>
-      <p>Modal is {isOpen ? 'open' : 'closed'}</p>
-      <button onClick={open}>Open</button>
-      <button onClick={close}>Close</button>
-      <button onClick={toggle}>Toggle</button>
-    </div>
-  )
-}
-```
-
-#### API
-
-- **Options:**
-  - `isOpen` (optional): The initial boolean value. Defaults to `false`.
-  - `onOpen` (optional): A callback function to be called when the modal is opened.
-  - `onClose` (optional): A callback function to be called when the modal is closed.
-
-- **Returns:**
-  - `isOpen`: The current boolean value
-  - `open()`: A function to open the modal
-  - `close()`: A function to close the modal
-  - `toggle()`: A function to toggle the modal
-
----
-
-## Development
-
-This project uses Vite for development and building.
-
+Run locally:
 ```bash
-# Install dependencies
-yarn install
-
-# Run development server
-yarn dev
-
-# Build the library
-yarn build
-
-# Lint the code
-yarn lint
-
-# Preview production build
-yarn preview
+yarn dev:docs
 ```
+
+## Scripts (root)
+- `yarn build` – build all workspaces
+- `yarn build:pkg` – build hooks package
+- `yarn build:docs` – build docs site
+- `yarn dev:docs` – start docs site
+- `yarn lint` – run ESLint
+
+## Release Flow
+1. Update version in `packages/ihooks/package.json`
+2. Build package: `yarn build:pkg`
+3. Publish from `packages/ihooks`: `npm publish --access public`
 
 ## License
-
 MIT

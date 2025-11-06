@@ -1,0 +1,34 @@
+# useDisclosure
+
+A hook to manage a boolean toggle state.
+
+## API
+
+```ts
+const { isOpen, open, close, toggle } = useDisclosure(options?)
+```
+
+- **options.isOpen**: Initial state (default `false`)
+- **options.onOpen**: Callback when opened
+- **options.onClose**: Callback when closed
+
+## Example
+
+```tsx
+import { useDisclosure } from '@intks/hooks'
+
+export default function Demo() {
+  const { isOpen, open, close, toggle } = useDisclosure({
+    onOpen: () => console.log('opened'),
+    onClose: () => console.log('closed'),
+  })
+  return (
+    <div>
+      <button onClick={open}>Open</button>
+      <button onClick={close}>Close</button>
+      <button onClick={toggle}>Toggle</button>
+      <p>isOpen: {String(isOpen)}</p>
+    </div>
+  )
+}
+```

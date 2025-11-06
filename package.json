@@ -1,64 +1,30 @@
 {
-  "name": "@intks/hooks",
+  "name": "intks-hooks-monorepo",
   "private": true,
   "version": "0.0.1",
   "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    },
-    "./hooks": {
-      "types": "./dist/hooks/index.d.ts",
-      "default": "./dist/hooks/index.js"
-    },
-    "./hooks/*": {
-      "types": "./dist/hooks/*.d.ts",
-      "default": "./dist/hooks/*.js"
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/*",
-        "./dist/hooks/*",
-        "./*"
-      ]
-    }
-  },
-  "files": [
-    "dist",
-    "README.md"
+  "workspaces": [
+    "packages/*",
+    "apps/*"
   ],
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "build": "yarn workspaces foreach -pt run build",
+    "build:hooks": "yarn workspace @intks/hooks run build",
+    "build:docs": "yarn workspace @intks/hooks-doc run build",
+    "start:docs": "yarn workspace @intks/hooks-doc run start",
+    "dev:docs": "yarn workspace @intks/hooks-doc run dev",
+    "lint": "eslint ."
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
     "@types/node": "^24.6.0",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
-    "@vitejs/plugin-react": "^5.0.4",
     "eslint": "^9.36.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.22",
     "globals": "^16.4.0",
-    "rollup-plugin-preserve-directives": "^0.4.0",
     "typescript": "~5.9.3",
-    "typescript-eslint": "^8.45.0",
-    "vite": "npm:rolldown-vite@7.1.14",
-    "vite-plugin-dts": "^4.5.4"
-  },
-  "resolutions": {
-    "vite": "npm:rolldown-vite@7.1.14"
+    "typescript-eslint": "^8.45.0"
   }
 }

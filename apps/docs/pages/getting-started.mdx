@@ -1,0 +1,28 @@
+# Getting Started
+
+```bash
+# Install via npm
+npm install @intks/hooks
+# or
+yarn add @intks/hooks
+# or
+pnpm add @intks/hooks
+```
+
+Usage example:
+
+```tsx
+import { useDisclosure } from '@intks/hooks'
+
+export default function Example() {
+  const { isOpen, open, close, toggle } = useDisclosure()
+  return (
+    <div>
+      <button onClick={open}>Open</button>
+      <button onClick={close}>Close</button>
+      <button onClick={toggle}>Toggle</button>
+      <p>isOpen: {String(isOpen)}</p>
+    </div>
+  )
+}
+```
