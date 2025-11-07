@@ -5,7 +5,7 @@ const withNextra = nextra({
   themeConfig: './theme.config.js'
 })
 
-const repo = 'i-hooks'
+const repo = 'ihoku'
 const isDev = process.env.NODE_ENV !== 'production'
 const isCI = process.env.CI === 'true' || process.env.NEXT_PUBLIC_IS_CI === 'true'
 

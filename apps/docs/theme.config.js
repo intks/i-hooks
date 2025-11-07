@@ -1,15 +1,15 @@
 /** @type {import('nextra-theme-docs').DocsThemeConfig} */
 const config = {
-  logo: 'i-hooks',
-  project: { link: 'https://github.com/intks/i-hooks' },
+  logo: 'ihoku',
+  project: { link: 'https://github.com/intks/ihoku' },
   link: null,
 
-  docsRepositoryBase: 'https://github.com/intks/i-hooks/tree/main/apps/docs',
+  docsRepositoryBase: 'https://github.com/intks/ihoku/tree/main/apps/docs',
 
   useNextSeoProps() {
-    return { titleTemplate: '%s – i-hooks' }
+    return { titleTemplate: '%s – ihoku' }
   },
-  footer: { text: 'i-hooks Docs' }
+  footer: { text: 'ihoku Docs' }
 }
 
 export default config
