@@ -1,8 +1,10 @@
 /** @type {import('nextra-theme-docs').DocsThemeConfig} */
 const config = {
   logo: 'i-hooks',
-  project: { link: 'https://github.com/' },
-  docsRepositoryBase: 'https://github.com/',
+  project: { link: 'https://github.com/intks/i-hooks' },
+
+  docsRepositoryBase: 'https://github.com/intks/i-hooks/tree/main/apps/docs',
+
   useNextSeoProps() {
     return { titleTemplate: '%s – i-hooks' }
   },
@@ -10,4 +12,3 @@ const config = {
 }
 
 export default config
-
