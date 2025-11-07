@@ -1,8 +1,8 @@
-# intks-hooks-monorepo
+# ihoku-monorepo
 
 Monorepo containing the hooks package and documentation site.
 
-- `packages/ihooks` – publishable package `@intks/hooks`
+- `packages/ihoku` – publishable package `@intks/ihoku`
 - `apps/docs` – docs site (Next.js + Nextra)
 
 ## Quick Start
@@ -18,20 +18,20 @@ yarn dev:docs
 yarn build
 ```
 
-## Package: @intks/hooks
+## Package: @intks/ihoku
 
 Install:
 ```bash
-npm install @intks/hooks
+npm install @intks/ihoku
 # or
-yarn add @intks/hooks
+yarn add @intks/ihoku
 # or
-pnpm add @intks/hooks
+pnpm add @intks/ihoku
 ```
 
 Usage:
 ```ts
-import { useDisclosure } from '@intks/hooks'
+import { useDisclosure } from '@intks/ihoku'
 ```
 
 Peer dependencies:

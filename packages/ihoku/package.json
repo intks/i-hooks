@@ -1,5 +1,5 @@
 {
-  "name": "@intks/hooks",
+  "name": "@intks/ihoku",
   "version": "0.0.1",
   "private": false,
   "type": "module",
@@ -28,13 +28,16 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.build.json && node ./scripts/copy-esm.cjs"
+    "build": "vite build"
   },
   "peerDependencies": {
     "react": ">=18"
   },
   "devDependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "5.1.0",
+    "vite-plugin-dts": "4.5.4",
+    "vite": "7.2.1"
   }
 }

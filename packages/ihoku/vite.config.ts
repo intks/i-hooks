@@ -1,8 +1,7 @@
 import { readFileSync } from 'fs'
 
 import react from '@vitejs/plugin-react'
-import { defineConfig, withFilter } from 'vite'
-import { preserveDirectives } from 'rollup-plugin-preserve-directives'
+import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 
 const packageJson = JSON.parse(readFileSync('./package.json', { encoding: 'utf-8' }))
@@ -16,9 +15,6 @@ export default defineConfig(({ command }) => {
 
   if (isLibrary) {
     return {
-      experimental: {
-        enableNativePlugin: true,
-      },
       plugins: [
         react(),
         dts({
@@ -30,24 +26,17 @@ export default defineConfig(({ command }) => {
       ],
       build: {
         lib: {
-          entry: ['src/index.ts'],
-          formats: ['es'],
+          entry: 'src/index.ts',
+          formats: ['es', 'cjs'],
+          fileName: (format) => `index.${format === 'es' ? 'mjs' : 'js'}`,
         },
-        rolldownOptions: {
+        rollupOptions: {
           external: ['react', 'react-dom', 'lodash', 'lodash-es', 'react/jsx-runtime', ...Object.keys(globals)],
           output: {
             preserveModules: true,
             preserveModulesRoot: 'src',
-            entryFileNames: '[name].js',
+            entryFileNames: ({ name }) => `${name}.${name.endsWith('index') ? 'mjs' : 'js'}`,
           },
-
-          plugins: [
-            withFilter(
-              preserveDirectives({}),
-
-              { load: { id: /\.tsx?$/ } }
-            ),
-          ],
         },
         copyPublicDir: false,
       },
@@ -55,9 +44,6 @@ export default defineConfig(({ command }) => {
   }
 
   return {
-    experimental: {
-      enableNativePlugin: true,
-    },
     plugins: [react()],
   }
 })

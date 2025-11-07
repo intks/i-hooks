@@ -1,15 +1,15 @@
-# @intks/hooks
+# @intks/ihoku
 
 A collection of useful React hooks built with TypeScript.
 
 ## Installation
 
 ```bash
-npm install @intks/hooks
+npm install @intks/ihoku
 # or
-yarn add @intks/hooks
+yarn add @intks/ihoku
 # or
-pnpm add @intks/hooks
+pnpm add @intks/ihoku
 ```
 
 ## Usage
@@ -18,10 +18,10 @@ pnpm add @intks/hooks
 
 ```ts
 // Import from the main entry
-import { useDisclosure } from '@intks/hooks'
+import { useDisclosure } from '@intks/ihoku'
 
 // Or import an individual hook subpath
-import { useDisclosure } from '@intks/hooks/useDisclosure'
+import { useDisclosure } from '@intks/ihoku/useDisclosure'
 ```
 
 ## Hooks
@@ -30,7 +30,7 @@ import { useDisclosure } from '@intks/hooks/useDisclosure'
 A hook for managing a boolean state with open, close, and toggle helpers.
 
 ```tsx
-import { useDisclosure } from '@intks/hooks'
+import { useDisclosure } from '@intks/ihoku'
 
 export default function MyComponent() {
   const { isOpen, open, close, toggle } = useDisclosure()

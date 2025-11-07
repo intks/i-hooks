@@ -15,13 +15,14 @@ const { isOpen, open, close, toggle } = useDisclosure(options)
 ## Example
 
 ```tsx
-import { useDisclosure } from '@intks/hooks'
+import { useDisclosure } from '@intks/ihoku'
 
 export default function Demo() {
   const { isOpen, open, close, toggle } = useDisclosure({
     onOpen: () => console.log('opened'),
     onClose: () => console.log('closed'),
   })
+
   return (
     <div>
       <button onClick={open}>Open</button>

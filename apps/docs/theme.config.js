@@ -2,6 +2,7 @@
 const config = {
   logo: 'i-hooks',
   project: { link: 'https://github.com/intks/i-hooks' },
+  link: null,
 
   docsRepositoryBase: 'https://github.com/intks/i-hooks/tree/main/apps/docs',
 
