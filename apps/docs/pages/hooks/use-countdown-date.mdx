@@ -1,0 +1,78 @@
+# useCountdownDate
+
+A React hook to track a countdown to a target date.
+
+## Import
+
+```ts
+import { useCountdownDate } from '@intks/ihoku'
+```
+
+## API
+
+```ts
+useCountdownDate(targetDate: Date, placeholder?: string): {
+  days: string
+  hours: string
+  minutes: string
+  seconds: string
+}
+```
+
+Parameters
+- targetDate: Date — Required. The future date to count down to.
+- placeholder: string — Optional. Initial placeholder shown before the first tick (default: `'- -'`).
+
+Return values
+- days: string — Remaining days as a zero-padded string (e.g. `"04"`).
+- hours: string — Remaining hours as a zero-padded string.
+- minutes: string — Remaining minutes as a zero-padded string.
+- seconds: string — Remaining seconds as a zero-padded string.
+
+Behavior
+- Updates every second.
+- Values are returned as strings padded to at least two characters.
+- If the target date is in the past, the hook will return negative numbers (as strings); handle this case in your component if needed.
+
+## Example
+
+```tsx
+import { useCountdownDate } from '@intks/ihoku'
+
+export default function CountdownDemo() {
+  const target = new Date('2025-12-31T23:59:59')
+  const { days, hours, minutes, seconds } = useCountdownDate(target)
+
+  return (
+    <div>
+      <h3>Countdown to 2025-12-31 23:59:59</h3>
+      <div style={{ fontSize: 20 }}>
+        {days} days {hours}:{minutes}:{seconds}
+      </div>
+    </div>
+  )
+}
+```
+
+## Dynamic target example
+
+```tsx
+import { useMemo } from 'react'
+import { useCountdownDate } from '@intks/ihoku'
+
+export default function DynamicCountdown() {
+  const target = useMemo(() => {
+    const t = new Date()
+    t.setDate(t.getDate() + 10) // 10 days from now
+    return t
+  }, [])
+
+  const { days, hours, minutes, seconds } = useCountdownDate(target, '--')
+
+  return <div>{days}d {hours}h {minutes}m {seconds}s</div>
+}
+```
+
+## Notes
+- If you need to trigger an action when the countdown reaches zero, check the returned values in your component and run the side effect there.
+- For a seconds-based timer with controls (start/reset), consider using the companion `useCountdownSeconds` hook.

@@ -1,0 +1,43 @@
+# useCopy
+
+A hook to copy text to the clipboard.
+
+## API
+
+```ts
+const { copy, copiedText } = useCopy()
+```
+- **copy(text: string)**: Function to copy the provided text to the clipboard.
+- **copiedText**: The last text that was copied.
+
+## Example
+
+```tsx
+import { useState } from 'react'
+import { useCopy } from '@intks/ihoku'
+
+export default function Demo() {
+  const [value, setValue] = useState('Hello world')
+  const { copy, copiedText } = useCopy()
+
+  const handleCopy = async () => {
+    const ok = await copy(value)
+    if (ok) {
+      // optional: provide feedback
+      console.log('Copied:', value)
+    } else {
+      console.log('Copy failed')
+    }
+  }
+
+  return (
+    <div>
+      <input value={value} onChange={(e) => setValue(e.target.value)} />
+      <button onClick={handleCopy}>Copy</button>
+      <div style={{ marginTop: 8 }}>
+        <strong>Last copied:</strong> {copiedText ?? '—'}
+      </div>
+    </div>
+  )
+}
+```

@@ -1,0 +1,79 @@
+# useCountdownSeconds
+
+A React hook to run a seconds-based countdown with simple controls.
+
+## Import
+
+```ts
+import { useCountdownSeconds } from '@intks/ihoku'
+```
+
+## API
+
+```ts
+useCountdownSeconds(initialSeconds: number): {
+  value: number
+  start: () => void
+  reset: () => void
+  isCounting: boolean
+  setValue: Dispatch<SetStateAction<number>>
+}
+```
+
+Parameters
+- initialSeconds: number — Required. The starting number of seconds for the countdown.
+
+Return values
+- value: number — Current seconds remaining.
+- start: () => void — Begin counting down (sets isCounting to true).
+- reset: () => void — Stop counting and reset value to initialSeconds.
+- isCounting: boolean — Whether the countdown is currently running.
+- setValue: Function — Directly set the seconds remaining.
+
+Behavior
+- When started, the hook decreases value by 1 every 1000ms.
+- Counting stops automatically at 0.
+- reset() stops counting and restores the initial value.
+- setValue can be used to adjust the remaining seconds at runtime.
+
+## Example
+
+```tsx
+import { useCountdownSeconds } from '@intks/ihoku'
+
+export default function SecondsCountdownDemo() {
+  const { value, start, reset, isCounting } = useCountdownSeconds(30)
+
+  return (
+    <div>
+      <h3>Countdown: {value}s</h3>
+      <button onClick={start} disabled={isCounting}>
+        Start
+      </button>
+      <button onClick={reset}>Reset</button>
+    </div>
+  )
+}
+```
+
+## Change remaining seconds
+
+```tsx
+import { useCountdownSeconds } from '@intks/ihoku'
+
+export default function AdjustableCountdown() {
+  const { value, start, setValue } = useCountdownSeconds(10)
+
+  return (
+    <div>
+      <div>{value} seconds</div>
+      <button onClick={start}>Start</button>
+      <button onClick={() => setValue((v) => v + 5)}>+5s</button>
+    </div>
+  )
+}
+```
+
+## Notes
+- Use isCounting to disable controls or run side effects while the timer is active.
+- If you need callback hooks when the timer reaches zero, observe `value` in your component and trigger effects there.
